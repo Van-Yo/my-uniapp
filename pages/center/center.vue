@@ -4,30 +4,36 @@
 			<view class="title">center</view>
 		</view>
 		<view class="content">
-			<u-button @click="openAuth()">模拟后端消息推送</u-button>
+			<u-button @click="sendMsg()">模拟后端消息推送</u-button>
 			<u-toast ref="uToast"></u-toast>
 		</view>
 	</view>
 </template>
 
 <script>
+import {getApst,getAppid} from '../../api/home.js'
 export default {
 	data() {
 		return {
 			searchBarTop:0,
 			searchBarHeight:0,
 			tmplIds:['rcZXYCCbrJBK0Z338-Zq_VhUPhAuj8wWC7I67CZ8wNY'],
-			AppId: 'wx0d58ca03bfd79468',
-			apst: '32df029374adad35a34eaa3c8521ac45',
+			AppId: '',
+			apst: '',
 		};
-	},
-	onLaunch(){
-		// this.show = true
 	},
 	onLoad(){
 		this.getHeight()
 	},
 	methods: {
+		async getApst(){
+			let res = await getApst()
+			this.apst = res.apst
+		},
+		async getAppid(){
+			let res = await getAppid()
+			this.AppId = res.appid
+		},
 		// 获取微信右上角胶囊高度
 		getHeight() {
 			let menuButtonInfo = wx.getMenuButtonBoundingClientRect();
@@ -98,6 +104,8 @@ export default {
 		async sendMsg(){
 		     const js_code = await this.getJsCode(); // => js_code:  0f1Dc7100yXgJQ1X16400ZX4Jw2Dc71L
 		     const openid = await this.getOpenId(js_code); // => openid:  owHoB4wFGk6CmPF1uZ5Mwq5quj8A
+			await this.getApst()
+			await this.getAppid()
 		     const access_token = await this.getAccessToken();
 		     uni.request({
 		         url: 'https://api.weixin.qq.com/cgi-bin/message/subscribe/send?access_token=' +
