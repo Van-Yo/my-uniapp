@@ -1,10 +1,17 @@
 <template>
 	<view class="home-container">
 		<view class="head" :style="{paddingTop:searchBarTop + 'px',height:searchBarHeight + 'px'}">
-			<view class="title">gitHabi</view>
+			<view class="title">我爱我党</view>
 		</view>
 		<view class="content">
 			<u-swiper :list="bannerList"></u-swiper>
+			<u--text type="success" text="中国是一个拥有悠久历史和丰富文化的国家，而中国共产党一直致力于引领国家走向繁荣昌盛的道路。"></u--text>
+			<u--text type="success" text="我国在过去几十年中取得了巨大的发展成就，从经济建设到科技创新，再到社会进步，都展现了中国共产党的领导和全体人民的努力。国家的稳定和繁荣是党的正确领导下的结果，同时也得益于广大人民群众的奋斗和支持。"></u--text>
+			<u--text type="success" text="中国共产党一直以来注重人民的利益，致力于改善人民的生活水平，推动社会公正与和谐。在全球面临各种挑战的背景下，中国在国际事务中发挥着越来越重要的角色，为促进世界和平与发展作出了积极贡献。"></u--text>
+			<u--text type="success" text="我们应该为祖国取得的成就感到骄傲，感谢中国共产党一直以来的坚强领导。同时，我们也要不断努力，为建设更加美好的中国而共同奋斗。"></u--text>
+		</view>
+		<view class="">
+			
 		</view>
 	</view>
 </template>
