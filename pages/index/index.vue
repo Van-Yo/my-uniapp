@@ -1,11 +1,11 @@
 <template>
 	<view class="home-container">
-<!-- 		<div class="bg">
-			<u--image src="/static/home/home-bg.jpg" width="100vw"></u--image>
-		</div> -->
-		<div class="content" :style="'padding-top:' + titleHeight + 'px'">
+		<view class="head" :style="{paddingTop:searchBarTop + 'px',height:searchBarHeight + 'px'}">
 			<view class="title">gitHabi</view>
-		</div>
+		</view>
+		<view class="content">
+			<u-swiper :list="bannerList"></u-swiper>
+		</view>
 	</view>
 </template>
 
@@ -13,21 +13,28 @@
 export default {
 	data() {
 		return {
-			titleHeight:0
+			searchBarTop:0,
+			searchBarHeight:0,
+			bannerList: [
+			    'https://cdn.uviewui.com/uview/swiper/swiper1.png',
+			    'https://cdn.uviewui.com/uview/swiper/swiper2.png',
+			    'https://cdn.uviewui.com/uview/swiper/swiper3.png',
+			]
 		};
 	},
 	onLaunch(){
 		// this.show = true
 	},
-	onShow(){
+	onLoad(){
 		this.getHeight()
 	},
 	methods: {
 		// 获取微信右上角胶囊高度
 		getHeight() {
-			console.log('111111111111111111');
-			let res = wx.getMenuButtonBoundingClientRect();
-			this.titleHeight = res.top;
+			let menuButtonInfo = wx.getMenuButtonBoundingClientRect();
+			console.log({menuButtonInfo});
+			this.searchBarTop = menuButtonInfo.top;
+			this.searchBarHeight = menuButtonInfo.height;
 		}
 	}
 };
@@ -37,22 +44,26 @@ export default {
 .home-container {
 	width: 100%;
 	box-sizing: border-box;
-	.bg{
-		width: 100vw;
-		position: fixed;
-		z-index: -1;
-		border-radius: 50rpx;
-		overflow: hidden;
-	}
-	.content{
-		z-index: 9999;
+	display: flex;
+	flex-direction: column;
+	height: 100vh;
+	.head{
 		display: flex;
 		justify-content: center;
 		align-items: center;
+		height: auto;
+		background-color: rgb(247, 247, 250);
+		border-bottom:1px solid rgb(239, 239, 241);
+		padding: 10rpx 0;
 		.title{
 			color: #000;
 			font-size: 36rpx;
 		}
+	}
+	.content{
+		flex:1;
+		background-color: rgb(247, 247, 250);
+		overflow-y: auto;
 	}
 }
 
