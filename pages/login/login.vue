@@ -55,6 +55,7 @@ export default {
 			console.log(loginRes)
 			if(loginRes.code === '000'){
 				uni.$u.toast('登录成功')
+				uni.setStorageSync('token', 'tokerISD')
 				uni.switchTab({
 					url: '/pages/index/index'
 				})
