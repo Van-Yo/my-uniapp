@@ -51,6 +51,13 @@ export default {
   methods: {
     async login() {
 	  this.$refs.loginuForm.validate().then(async res => {
+			// 第一步：获取code是用户登录凭证
+			// const code = await this.getWxCode()
+			// console.log(code)
+			
+			// 第二步：调取后端给的绑定查询接口，查看该用户是否绑定或者其他逻辑
+			
+			// 第三步：如果没有绑定，则登录进行绑定
 			let loginRes = await login(this.loginForm)
 			console.log(loginRes)
 			if(loginRes.code === '000'){
@@ -65,7 +72,18 @@ export default {
 	  }).catch(errors => {
 	  		// uni.$u.toast('校验失败')
 	  })
-    }
+    },
+	// 获取code是用户登录凭证
+	getWxCode(){
+		return new Promise((resolve, reject) => {
+			wx.login({
+			  success: res => {
+				//获取code
+				resolve(res.code)
+			  }
+			})
+		})
+	}
   }
 };
 </script>
