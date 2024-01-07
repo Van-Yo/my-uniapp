@@ -29,15 +29,7 @@ appOnLaunch++
 			if (to.path === '/pages/login/login') {
 				next()
 			} else {
-				uni.showToast({
-					title: '登录过期',
-					icon: 'none',
-					duration: 3000,
-					complete: () => {
-						next({ path: '/pages/login/login',NAVTYPE:'replace' })
-					}
-				})
-				
+				next('/pages/login/login?type=noToken')
 			}
 		}
 	}else{

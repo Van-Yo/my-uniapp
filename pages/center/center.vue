@@ -5,6 +5,7 @@
 		</view>
 		<view class="content">
 			<u-button @click="sendMsg()">模拟后端消息推送</u-button>
+			<u-button @click="logout()">注销推出</u-button>
 			<u--text type="success" text="中国共产党是中国人民的先锋队和领导核心，其成立至今已经走过了漫长的历程。在建党百年的光辉历程中，中国共产党铭记初心使命，勇于创新，为中国人民和中华民族取得了丰功伟绩。"></u--text>
 			<u--text type="success" text="党的成立标志着中国历史的新纪元。在长期的革命斗争中，中国共产党带领人民取得了反帝反封建的胜利，实现了国家的独立和人民的解放，结束了中国长期的半殖民地半封建社会的命运，开启了中国发展的新纪元。"></u--text>
 			<u--text type="success" text="改革开放以来，中国共产党带领全国人民迎来了巨大的经济发展和社会进步。中国经济持续增长，成为全球增长的重要引擎，人民生活水平显著提高，教育、医疗、社会保障等各项事业不断改善，脱贫攻坚取得历史性成就，为世界减贫事业作出了巨大贡献。"></u--text>
@@ -31,6 +32,12 @@ export default {
 		this.getHeight()
 	},
 	methods: {
+		logout(){
+			uni.clearStorageSync('token')
+			uni.redirectTo({
+				url: '/pages/login/login'
+			})
+		},
 		async getApst(){
 			let res = await getApst()
 			this.apst = res.apst

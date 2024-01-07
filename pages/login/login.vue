@@ -48,6 +48,17 @@ export default {
 		}
     };
   },
+  onLoad(){
+	  const {type} = this.$Route.query
+	  console.log(type)
+	  if(type === 'noToken'){
+		  uni.showToast({
+		  	title: '请先登录',
+		  	icon: 'none',
+		  	duration: 1500
+		  })
+	  }
+  },
   methods: {
     async login() {
 	  this.$refs.loginuForm.validate().then(async res => {
@@ -61,11 +72,17 @@ export default {
 			let loginRes = await login(this.loginForm)
 			console.log(loginRes)
 			if(loginRes.code === '000'){
-				uni.$u.toast('登录成功')
 				uni.setStorageSync('token', 'tokerISD')
-				uni.switchTab({
-					url: '/pages/index/index'
+				uni.showToast({
+					title: '登录成功',
+					icon: 'none',
+					duration: 1500,
 				})
+				setTimeout(()=>{
+					uni.switchTab({
+						url: '/pages/index/index'
+					})
+				},1500)
 			}else{
 				uni.$u.toast('登录失败')
 			}
