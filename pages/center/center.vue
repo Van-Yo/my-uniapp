@@ -3,6 +3,12 @@
 		<view class="head" :style="{paddingTop:searchBarTop + 'px',height:searchBarHeight + 'px'}">
 			<view class="title">丰功伟绩</view>
 		</view>
+		<view class="person-info">
+			<button class="avatar-wrapper" open-type="chooseAvatar" @chooseavatar="onChooseAvatar">
+			  <image class="avatar" :src="avatarUrl"></image>
+			</button> 
+			<input type="nickname" v-model="nickname" class="weui-input" placeholder="请输入昵称" @blur="blur" @input="inputChange"/>
+		</view>
 		<view class="content">
 			<u-button @click="sendMsg()">模拟后端消息推送</u-button>
 			<u-button @click="logout()">注销推出</u-button>
@@ -26,12 +32,35 @@ export default {
 			tmplIds:['rcZXYCCbrJBK0Z338-Zq_VhUPhAuj8wWC7I67CZ8wNY'],
 			AppId: '',
 			apst: '',
+			avatarUrl: 'https://mmbiz.qpic.cn/mmbiz/icTdbqWNOwNRna42FI242Lcia07jQodd2FJGIYQfG0LAJGFxM4FbnQP6yfMxBgJ0F3YRqJCJ1aPAK2dQagdusBZg/0',
+			nickname:''
 		};
 	},
 	onLoad(){
 		this.getHeight()
+		this.getUserInfo()
 	},
 	methods: {
+		blur(e){
+			uni.setStorageSync('nickname',e.detail.value)
+		},
+		inputChange(e){
+			uni.setStorageSync('nickname',e.detail.value)
+		},
+		getUserInfo(){
+			if(uni.getStorageSync('avatarUrl')){
+				this.avatarUrl = uni.getStorageSync('avatarUrl')
+			}
+			if(uni.getStorageSync('nickname')){
+				this.nickname = uni.getStorageSync('nickname')
+			}
+		},
+		onChooseAvatar(e) {
+		    const { avatarUrl } = e.detail
+			console.log(avatarUrl);
+			this.avatarUrl = avatarUrl
+			uni.setStorageSync('avatarUrl',avatarUrl)
+		},
 		logout(){
 			uni.clearStorageSync('token')
 			uni.redirectTo({
@@ -195,6 +224,24 @@ export default {
 		background-color: rgb(247, 247, 250);
 		overflow-y: auto;
 	}
+	.person-info{
+		display: flex;
+		justify-content: flex-start;
+		padding: 40rpx;
+		.avatar-wrapper{
+			width: 120rpx;
+			height: 120rpx;
+			padding: 0;
+			overflow: hidden;
+			margin: 0;
+			margin-right: 30rpx;
+			image{
+				width: 100%;
+				height: 100%;
+			}
+		}
+	}
+	
 }
 
 </style>
