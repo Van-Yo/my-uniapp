@@ -21,10 +21,10 @@
 					<view class="" style="margin-left: 10px;">
 						<text>{{weatherCondition.city_name}}</text>
 					</view>
-					<view class="" style="display: flex;margin-left: 12px;">
+					<view class="" style="display: flex;margin-left: 5px;">
 						<!-- -->
 						<text style="font-size: 40px;line-height: 34px;">{{weatherCondition.current_temperature}}</text>
-						<view class="" style="display: flex;flex-direction: column;margin-left: 8px;">
+						<view class="" style="display: flex;flex-direction: column;margin-left: 3px;">
 							<text style="font-size: 30px;line-height: 24px;">°</text>
 							<text style="line-height: 2px;">{{weatherCondition.current_condition}}</text>
 						</view>
@@ -66,7 +66,9 @@ export default {
 			bannerHeight:200,
 			oneDayEnglish:{},
 			showImg:false,
-			weatherCondition:{},
+			weatherCondition:{
+				current_condition:''
+			},
 			pannelHeight:126,
 			weatherBg:'sun'
 		};
@@ -223,7 +225,7 @@ export default {
 }
 		.pop{
 			width: 100%;
-			height: 100%;
+			height: 100vh;
 			display: flex;
 			flex-direction: column;
 			justify-content: center;
