@@ -1,7 +1,7 @@
 <template>
 	<view class="home-container">
 		<view class="head" :style="{paddingTop:searchBarTop + 'px',height:searchBarHeight + 'px'}">
-			<view class="title">丰功伟绩</view>
+			<view class="title">个人中心</view>
 		</view>
 		<view class="person-info">
 			<button class="avatar-wrapper" open-type="chooseAvatar" @chooseavatar="onChooseAvatar">
@@ -10,13 +10,9 @@
 			<input type="nickname" v-model="nickname" class="weui-input" placeholder="请输入昵称" @blur="blur" @input="inputChange"/>
 		</view>
 		<view class="content">
+			<!-- 只能开发版使用，因为https://api.weixin.qq.com无法添加到合法域名 -->
 			<u-button @click="openAuth()">模拟后端消息推送</u-button>
 			<u-button @click="logout()">注销推出</u-button>
-			<u--text type="success" text="中国共产党是中国人民的先锋队和领导核心，其成立至今已经走过了漫长的历程。在建党百年的光辉历程中，中国共产党铭记初心使命，勇于创新，为中国人民和中华民族取得了丰功伟绩。"></u--text>
-			<u--text type="success" text="党的成立标志着中国历史的新纪元。在长期的革命斗争中，中国共产党带领人民取得了反帝反封建的胜利，实现了国家的独立和人民的解放，结束了中国长期的半殖民地半封建社会的命运，开启了中国发展的新纪元。"></u--text>
-			<u--text type="success" text="改革开放以来，中国共产党带领全国人民迎来了巨大的经济发展和社会进步。中国经济持续增长，成为全球增长的重要引擎，人民生活水平显著提高，教育、医疗、社会保障等各项事业不断改善，脱贫攻坚取得历史性成就，为世界减贫事业作出了巨大贡献。"></u--text>
-			<u--text type="success" text="党的领导力也在国际舞台上得到广泛认可。中国积极参与国际合作，提出“一带一路”倡议，推动构建人类命运共同体，为全球和平与发展作出了重要贡献。"></u--text>
-			<u--text type="success" text="中国共产党百年奋斗历程充满艰辛和荣耀，其丰功伟绩激励着全国各族人民不忘初心、牢记使命，为实现中华民族伟大复兴的中国梦而努力奋斗。愿党和国家在新的历史征程中继续砥砺前行，为建设富强民主文明和谐美丽的社会主义现代化强国而不懈努力。"></u--text>
 			<u-toast ref="uToast"></u-toast>
 		</view>
 	</view>
