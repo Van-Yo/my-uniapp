@@ -45,3 +45,11 @@ export function getlocation(lng,lat) {
 		method: 'get',
 	})
 }
+
+// 历史上的今天
+export function getHistory() {
+	return ajax({
+		url: 'https://api.oioweb.cn/api/common/history',
+		method: 'get'
+	})
+}

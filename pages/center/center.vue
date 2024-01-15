@@ -58,7 +58,7 @@ export default {
 			uni.setStorageSync('avatarUrl',avatarUrl)
 		},
 		logout(){
-			uni.clearStorageSync('token')
+			uni.removeStorageSync('token')
 			uni.redirectTo({
 				url: '/pages/login/login'
 			})

@@ -40,8 +40,8 @@
 						<u--image :showLoading="true" width="100%"  mode="widthFix" src="/static/home/snow.png" v-if="weatherCondition.current_condition.includes('雪')"></u--image>
 					</view>
 				</view>
-				<view class="pannel" :style="{height:pannelHeight+'px'}">
-					<u--image :showLoading="true" width="100%"  mode="widthFix"  radius="10" :src="oneDayEnglish.img"></u--image>
+				<view class="pannel" :style="{height:pannelHeight+'px'}" @click="goToHistroy">
+					<u--image :showLoading="true" width="100%"  mode="widthFix"  radius="10" src="https://picx.zhimg.com/70/v2-845e57b06c47889dc8f01abd53bb28fc_1440w.avis?source=172ae18b&biz_tag=Post"></u--image>
 				</view>
 			</view>
 		</view>
@@ -142,6 +142,9 @@ export default {
 				   }
 			 }
 			})
+		},
+		goToHistroy(){
+			uni.navigateTo({url:'/pages/index/histroy/histroy'})
 		}
 	}
 };
