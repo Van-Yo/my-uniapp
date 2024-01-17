@@ -36,7 +36,7 @@
 					<view class="w-icon">
 						<u--image :showLoading="true" width="100%"  mode="widthFix" src="/static/home/rain.png" v-if="weatherCondition.current_condition.includes('雨')"></u--image>
 						<u--image :showLoading="true" width="100%"  mode="widthFix" src="/static/home/sun.png" v-if="weatherCondition.current_condition.includes('晴')"></u--image>
-						<u--image :showLoading="true" width="100%"  mode="widthFix" src="/static/home/blur.png" v-if="weatherCondition.current_condition.includes('阴')"></u--image>
+						<u--image :showLoading="true" width="100%"  mode="widthFix" src="/static/home/blur.png" v-if="weatherCondition.current_condition.includes('阴') || weatherCondition.current_condition.includes('云')"></u--image>
 						<u--image :showLoading="true" width="100%"  mode="widthFix" src="/static/home/snow.png" v-if="weatherCondition.current_condition.includes('雪')"></u--image>
 					</view>
 				</view>
@@ -135,7 +135,7 @@ export default {
 					   this.weatherBg = 'sun'
 				   }else if(this.weatherCondition.current_condition.includes('雨')){
 					   this.weatherBg = 'rain'
-				   }else if(this.weatherCondition.current_condition.includes('阴')){
+				   }else if(this.weatherCondition.current_condition.includes('阴')||this.weatherCondition.current_condition.includes('云')){
 					   this.weatherBg = 'blur'
 				   }else if(this.weatherCondition.current_condition.includes('雪')){
 					   this.weatherBg = 'snow'
