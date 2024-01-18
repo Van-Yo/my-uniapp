@@ -11,7 +11,7 @@
 		</view>
 		<view class="content">
 			<!-- 只能开发版使用，因为https://api.weixin.qq.com无法添加到合法域名 -->
-			<u-button @click="openAuth()">模拟后端消息推送</u-button>
+			<!-- <u-button @click="openAuth()">模拟后端消息推送</u-button> -->
 			<u-button @click="logout()">注销推出</u-button>
 			<u-toast ref="uToast"></u-toast>
 		</view>

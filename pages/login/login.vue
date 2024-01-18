@@ -76,13 +76,13 @@ export default {
 				uni.showToast({
 					title: '登录成功',
 					icon: 'none',
-					duration: 1500,
+					duration: 1000,
 				})
 				setTimeout(()=>{
 					uni.switchTab({
 						url: '/pages/index/index'
 					})
-				},1500)
+				},1000)
 			}else{
 				uni.$u.toast('登录失败')
 			}
