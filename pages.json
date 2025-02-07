@@ -4,48 +4,32 @@
 		"^u-(.*)": "@/uni_modules/uview-ui/components/u-$1/u-$1.vue"
 	},
 	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
-	{
-		"path": "pages/index/index",
-		"meta": {
-			"auth": true, //需要登录
-			"async": true, //是否同步
-			"title": "首页" //标题
-		},
-		"style": {
-			"navigationBarTitleText": "index"
-		}
-	},
-	{
-	    "path" : "pages/login/login",
-	    "style" :                                                                                    
-	    {
-	        "navigationBarTitleText": "login",
-	        "enablePullDownRefresh": false
-	    }
-	    
-	},
 		{
-			"path": "pages/about/about",
+			"path": "pages/index/index",
+			"meta": {
+				"auth": true, //需要登录
+				"async": true, //是否同步
+				"title": "首页" //标题
+			},
 			"style": {
-				"navigationBarTitleText": "about"
+				"navigationBarTitleText": "index"
 			}
+		},
+		{
+			"path": "pages/login/login",
+			"style": {
+				"navigationBarTitleText": "login",
+				"enablePullDownRefresh": false
+			}
+
 		},{
 			"path": "pages/center/center",
 			"style": {
 				"navigationBarTitleText": "center"
 			}
 		}
-        ,{
-            "path" : "pages/categary/categary",
-            "style" :                                                                                    
-            {
-                "navigationBarTitleText": "",
-                "enablePullDownRefresh": false
-            }
-            
-        }
-        ,{
-            "path" : "pages/index/histroy/histroy",
+	    ,{
+            "path" : "pages/allGoodsList/allGoodsList",
             "style" :                                                                                    
             {
                 "navigationBarTitleText": "",
@@ -55,24 +39,24 @@
         }
     ],
 	"tabBar": {
-	    "color": "#7A7E83",
-	    "selectedColor": "#1296DB",
-	    "borderStyle": "black",
-	    "backgroundColor": "#ffffff",
-	    "list": [{
-	        "pagePath": "pages/index/index",
-	        "iconPath": "static/tabbar/home.png",
-	        "selectedIconPath": "static/tabbar/home-active.png",
-	        "text": "首页"
-	    },{
-	        "pagePath": "pages/center/center",
-	        "iconPath": "static/tabbar/center.png",
-	        "selectedIconPath": "static/tabbar/center-active.png",
-	        "text": "我的"
-	    }]
+		"color": "#7A7E83",
+		"selectedColor": "#1296DB",
+		"borderStyle": "black",
+		"backgroundColor": "#ffffff",
+		"list": [{
+			"pagePath": "pages/index/index",
+			"iconPath": "static/tabbar/home.png",
+			"selectedIconPath": "static/tabbar/home-active.png",
+			"text": "首页"
+		}, {
+			"pagePath": "pages/center/center",
+			"iconPath": "static/tabbar/center.png",
+			"selectedIconPath": "static/tabbar/center-active.png",
+			"text": "我的"
+		}]
 	},
 	"globalStyle": {
-		"navigationStyle":"custom",
+		"navigationStyle": "custom",
 		"navigationBarTextStyle": "black",
 		"navigationBarTitleText": "uni-app",
 		"navigationBarBackgroundColor": "#F8F8F8",

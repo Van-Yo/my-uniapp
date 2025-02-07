@@ -8,8 +8,8 @@
 				<u-avatar src="/static/login/basicprofile.png" size="80"></u-avatar>
 			</view>
 			<view class="input">
-				<u-form-item prop="username">
-					<u--input  border="bottom" v-model="loginForm.username" clearable placeholder="请输入用户名"></u--input>
+				<u-form-item prop="email">
+					<u--input  border="bottom" v-model="loginForm.email" clearable placeholder="请输入邮箱"></u--input>
 				</u-form-item>
 			</view>
 			<view class="input">
@@ -29,14 +29,14 @@ export default {
   data() {
     return {
 		loginForm:{
-			username: '',
+			email: '',
 			password: ''
 		},
 		loginrules:{
-			username: {
+			email: {
 				type: 'string',
 				required: true,
-				message: '请填写用户名',
+				message: '请填写邮箱',
 				trigger: ['blur', 'change']
 			},
 			password: {
@@ -69,10 +69,9 @@ export default {
 			// 第二步：调取后端给的绑定查询接口，查看该用户是否绑定或者其他逻辑
 			
 			// 第三步：如果没有绑定，则登录进行绑定
-			let loginRes = await login(this.loginForm)
-			console.log(loginRes)
-			if(loginRes.code === '000'){
-				uni.setStorageSync('token', 'tokerISD')
+			try{
+				let loginRes = await login(this.loginForm)
+				uni.setStorageSync('token', loginRes.access_token)
 				uni.showToast({
 					title: '登录成功',
 					icon: 'none',
@@ -83,8 +82,14 @@ export default {
 						url: '/pages/index/index'
 					})
 				},1000)
-			}else{
-				uni.$u.toast('登录失败')
+			}catch(e){
+				uni.$u.toast(e.data.message)
+				// this.$refs.uToast.show({
+				//           type: "error",
+				//           icon: false,
+				//           title: "失败主题",
+				//           message: "一弦一柱思华年"
+				//         });
 			}
 	  }).catch(errors => {
 	  		// uni.$u.toast('校验失败')

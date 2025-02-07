@@ -72,6 +72,7 @@
     "quickapp" : {},
     /* 小程序特有相关 */
     "mp-weixin" : {
+		"lazyCodeLoading": "requiredComponents", // 微信开发者工具总出现routeDone with a webviewId 错误
         "appid" : "wx0d58ca03bfd79468",
         "setting" : {
             "urlCheck" : false,
@@ -80,7 +81,6 @@
             "minified" : true
         },
         "usingComponents" : true,
-		"lazyCodeLoading": "requiredComponents",
 		"libVersion":"latest"
     },
     "mp-alipay" : {

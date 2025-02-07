@@ -17,15 +17,26 @@ export function getAppid() {
 // 获取banner
 export function getBanner() {
 	return ajax({
-		url: 'https://api.oioweb.cn/api/bing',
+		url: '/api/index',
 		method: 'get'
 	})
 }
 
+// 商品列表
+export function getGoods(params) {
+	return ajax({
+		url: '/api/goods',
+		method: 'get',
+		params
+	})
+}
+
+
 // 每日一句
 export function getOneDayEnglish() {
 	return ajax({
-		url: 'https://api.oioweb.cn/api/common/OneDayEnglish',
+		// url: 'https://api.oioweb.cn/api/common/OneDayEnglish',
+		url: 'https://api.uomg.com/api/rand.music?sort=%E7%83%AD%E6%AD%8C%E6%A6%9C&format=json',
 		method: 'get'
 	})
 }
@@ -33,7 +44,8 @@ export function getOneDayEnglish() {
 // 获取天气
 export function getweather(city) {
 	return ajax({
-		url: 'https://api.oioweb.cn/api/weather/weather?city_name='+city,
+		// url: 'https://api.oioweb.cn/api/weather/weather?city_name='+city,
+		url:'https://aider.meizu.com/app/weather/listWeather?cityIds='+city,
 		method: 'get'
 	})
 }

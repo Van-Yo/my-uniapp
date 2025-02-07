@@ -1,7 +1,7 @@
 import ajax from 'uni-ajax'
 //配置文档：https://uniajax.ponjs.com/instance/create.html
 const instance = ajax.create({
-	baseURL: 'https://www.fastmock.site/mock/5897df5b6cb3349c82995e9eaca16362/_mock-01/',
+	baseURL: 'https://api.shop.eduwork.cn/',
 	timeout: 10000
 })
 
@@ -24,16 +24,17 @@ const instance = ajax.create({
 //响应拦截
 instance.interceptors.response.use(
 	response => {
+		// console.log(response);
 		const { statusCode, data } = response
 		if (statusCode === 200) {
 			return data
 		} else {
-			uni.showToast({
-				title: '请求出错了',
-				icon: 'none',
-				duration: 1500,
-				position: 'top'
-			})
+			// uni.showToast({
+			// 	title: '请求出错了',
+			// 	icon: 'error',
+			// 	duration: 1500,
+			// 	position: 'top'
+			// })
 		}
 	},
 	error => {
